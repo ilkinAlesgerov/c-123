@@ -1,53 +1,70 @@
-﻿//                                   Задача №2 
-Console.Clear();                            
-Console.WriteLine("Введите  первое число ");
-int num1 = Convert.ToInt32(Console.ReadLine());
+﻿//              задача № 10 
+Console.WriteLine("Введите ваше число");
+int number = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Введите  второе число ");
-int num2 = Convert.ToInt32(Console.ReadLine());
-
-if (num1 > num2) {
-    Console.WriteLine(num1);
-} else {
-     Console.WriteLine(num2);
+void Multiple(int num)
+{
+    if (num > 100 && num < 1000 )
+    {
+        int result = num % 100; 
+        int secondNum = result / 10;
+        Console.WriteLine(secondNum);
+    } 
+    else
+    {
+        Console.WriteLine("недопустимое число");
+    }
 }
 
-//                                  Задача №4
+Multiple(number); 
 
-Console.WriteLine("Введите первое число");
-int num1 = Convert.ToInt32(Console.ReadLine());
+//              задача № 13
+Console.WriteLine("Введите ваше число");
+int number = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Введите второе число");
-int num2 = Convert.ToInt32(Console.ReadLine());
+void Multiple(int num)
+{
+    if ( num > 100 && num < 1000 ) 
+    {
+        // int result = number % 100;
+        // int secondNum = result % 10;
+        Console.WriteLine((num % 100) % 10);
+    } 
+    if (num < 100)
+    {
+        Console.WriteLine("третьей цифры нет");
+    }
+    else if (num > 1000)
+    {
+        string str = num.ToString();
 
-Console.WriteLine("Введите третье число");
-int num3 = Convert.ToInt32(Console.ReadLine());
-
-if (num1 > num2 && num1 > num3) {
-     Console.WriteLine(num1);
-} else if  (num2 > num1 && num2 > num3) {
-     Console.WriteLine(num2);
-} else if (num3 > num1 && num3 > num2) {
-     Console.WriteLine(num3);
+        // int num1 = number % 1000;
+        // int num2 = num1 / 100; 
+        Console.WriteLine(str[2]);   
+    }
 }
-//                               Задача 6 
-Console.WriteLine("Введите число");
-int num  = Convert.ToInt32(Console.ReadLine());
+Multiple(number);
 
-if (num % 2==1 ) {
-    Console.WriteLine("da");
-} else {
-    Console.WriteLine("нет");
-} 
- 
+//  задача № 15
 
-//              Задача № 8 
-Console.WriteLine("Введите число");
-int num  = Convert.ToInt32(Console.ReadLine());
 
-for (int i = 1; i < num;i++)
-    if (i % 2==0) {
-        Console.WriteLine(i);
+Console.WriteLine("Введите ваше число");
+int number = Convert.ToInt32(Console.ReadLine());
+
+void Multiple(int num)
+    {
+        if (num < 6)
+        {
+            Console.WriteLine("нет");
+        }
+        if (num == 6 || num == 7)
+        {
+            Console.WriteLine("да");
+        }
+        else if (num > 7)
+        {
+            Console.WriteLine("не корректное число");
+        }
     } 
 
-123    
+Multiple(number);
