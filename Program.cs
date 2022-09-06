@@ -1,70 +1,70 @@
-﻿//              задача № 10 
-Console.WriteLine("Введите ваше число");
-int number = Convert.ToInt32(Console.ReadLine());
+﻿//              задача № 19
 
-void Multiple(int num)
+Console.WriteLine("Введите пятизначное число:");
+int isPalindrome = Convert.ToInt32(Console.ReadLine());
+
+void CheckPalindrome(int num)
 {
-    if (num > 100 && num < 1000 )
-    {
-        int result = num % 100; 
-        int secondNum = result / 10;
-        Console.WriteLine(secondNum);
-    } 
-    else
-    {
-        Console.WriteLine("недопустимое число");
-    }
-}
-
-Multiple(number); 
-
-//              задача № 13
-Console.WriteLine("Введите ваше число");
-int number = Convert.ToInt32(Console.ReadLine());
-
-void Multiple(int num)
-{
-    if ( num > 100 && num < 1000 ) 
-    {
-        // int result = number % 100;
-        // int secondNum = result % 10;
-        Console.WriteLine((num % 100) % 10);
-    } 
-    if (num < 100)
-    {
-        Console.WriteLine("третьей цифры нет");
-    }
-    else if (num > 1000)
+    
+    if ( isPalindrome > 10000 && isPalindrome < 100000)
     {
         string str = num.ToString();
-
-        // int num1 = number % 1000;
-        // int num2 = num1 / 100; 
-        Console.WriteLine(str[2]);   
-    }
-}
-Multiple(number);
-
-//  задача № 15
-
-
-Console.WriteLine("Введите ваше число");
-int number = Convert.ToInt32(Console.ReadLine());
-
-void Multiple(int num)
-    {
-        if (num < 6)
-        {
-            Console.WriteLine("нет");
-        }
-        if (num == 6 || num == 7)
+        if (str[0] == str[4] && str[1] == str[3])
         {
             Console.WriteLine("да");
         }
-        else if (num > 7)
+        else
         {
-            Console.WriteLine("не корректное число");
+            Console.WriteLine("нет");
         }
-    } 
+    }
+}
 
-Multiple(number);
+CheckPalindrome(isPalindrome);
+
+
+
+//              Задача № 21 
+
+Console.WriteLine("Введите x1:");
+int x1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите y1:");
+int y1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите z1:");
+int z1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите x2:");
+int x2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите y2:");
+int y2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите z2:");
+int z2 = Convert.ToInt32(Console.ReadLine());
+
+
+double GetDistance( int x1, int y1, int z1, int x2, int y2,  int z2)
+{
+    double distance = Math.Sqrt(Math.Pow(x2-x1,2) + Math.Pow(y2-y1,2) + Math.Pow(z2-z1,2));
+    return distance;
+}
+
+Console.WriteLine(GetDistance(x1, y1, z1, x2, y2, z2)); 
+
+
+//              Задача № 23 
+
+Console.WriteLine("Введите ваше число");
+int number = Convert.ToInt32(Console.ReadLine());
+
+void GetDashboard(int num)
+{
+    for (int i = 1; i <= num; i++)
+    {
+        Console.WriteLine(i*i*i);
+    }
+}
+
+GetDashboard(number);
