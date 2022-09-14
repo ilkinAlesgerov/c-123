@@ -4,22 +4,22 @@
 // 2, 4 -> 16
 // не использую math.pow
 
-// Console.WriteLine("Введите ваше 1oe число");
-// int number = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine("Введите ваше 2oe число");
-// int number1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите ваше 1oe число");
+int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите ваше 2oe число");
+int number1 = Convert.ToInt32(Console.ReadLine());
 
-// int Vozvedenie(int num, int num2)
-// {
-//     int k = num2;
-//     int vozv = 1;
-//     for(int i = 1; i <= k; i++)
-//     {
-//         vozv *= num;
-//     }
-//     return vozv;
-// } 
-// Console.WriteLine(Vozvedenie(number, number1));
+int Vozvedenie(int num, int num2)
+{
+    int k = num2;
+    int vozv = 1;
+    for(int i = 1; i <= k; i++)
+    {
+        vozv *= num;
+    }
+    return vozv;
+} 
+Console.WriteLine(Vozvedenie(number, number1));
 
 //                                              Задача №2
 // Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
@@ -27,21 +27,21 @@
 // 82 -> 10
 // 9012 -> 12
 
-// Console.WriteLine("Введите ваше  число");
-// int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите ваше  число");
+int number = Convert.ToInt32(Console.ReadLine());
 
-// int DigitSum(int num)
-// {
-//     int sum = 0;
-//     while(num > 0)
-//     {
-//         sum += num%10;
-//         num /= 10;
-//     }
-//     return sum;
-// }
+int DigitSum(int num)
+{
+    int sum = 0;
+    while(num > 0)
+    {
+        sum += num%10;
+        num /= 10;
+    }
+    return sum;
+}
 
-// System.Console.WriteLine(DigitSum(number));
+System.Console.WriteLine(DigitSum(number));
 
 //                 задача 3 
 // Напишите программу, которая выводит массив из 8 элементов, заполненный случайными числами.
