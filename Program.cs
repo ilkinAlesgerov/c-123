@@ -1,70 +1,79 @@
-﻿//              задача № 19
+﻿// Задача 1 
+// Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+// 3, 5 -> 243 (3⁵)
+// 2, 4 -> 16
+// не использую math.pow
 
-Console.WriteLine("Введите пятизначное число:");
-int isPalindrome = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите ваше 1oe число");
+// int number = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите ваше 2oe число");
+// int number1 = Convert.ToInt32(Console.ReadLine());
 
-void CheckPalindrome(int num)
+// int Vozvedenie(int num, int num2)
+// {
+//     int k = num2;
+//     int vozv = 1;
+//     for(int i = 1; i <= k; i++)
+//     {
+//         vozv *= num;
+//     }
+//     return vozv;
+// } 
+// Console.WriteLine(Vozvedenie(number, number1));
+
+//                                              Задача №2
+// Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+// 452 -> 11
+// 82 -> 10
+// 9012 -> 12
+
+// Console.WriteLine("Введите ваше  число");
+// int number = Convert.ToInt32(Console.ReadLine());
+
+// int DigitSum(int num)
+// {
+//     int sum = 0;
+//     while(num > 0)
+//     {
+//         sum += num%10;
+//         num /= 10;
+//     }
+//     return sum;
+// }
+
+// System.Console.WriteLine(DigitSum(number));
+
+//                 задача 3 
+// Напишите программу, которая выводит массив из 8 элементов, заполненный случайными числами.
+// Оформите заполнение массива и вывод в виде функции (пригодится в следующих задачах)
+// 1,2,5,7,19,1,2,8 -> 1,2,5,7,19,1,2,8 
+//  -> 8
+
+int[] CreateArray()
 {
+    Random rnd = new Random();
+    var array = new int[8];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(0, 100);
+        System.Console.Write($"{array[i]},");
+    }
+    System.Console.Write("-> ");
+    return array;
+}
+
+void ShowArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        
+        Console.Write($"[{array[i]}]");
+        
+    }
     
-    if ( isPalindrome > 10000 && isPalindrome < 100000)
-    {
-        string str = num.ToString();
-        if (str[0] == str[4] && str[1] == str[3])
-        {
-            Console.WriteLine("да");
-        }
-        else
-        {
-            Console.WriteLine("нет");
-        }
-    }
 }
 
-CheckPalindrome(isPalindrome);
+
+ShowArray(CreateArray());
 
 
-
-//              Задача № 21 
-
-Console.WriteLine("Введите x1:");
-int x1 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите y1:");
-int y1 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите z1:");
-int z1 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите x2:");
-int x2 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите y2:");
-int y2 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите z2:");
-int z2 = Convert.ToInt32(Console.ReadLine());
-
-
-double GetDistance( int x1, int y1, int z1, int x2, int y2,  int z2)
-{
-    double distance = Math.Sqrt(Math.Pow(x2-x1,2) + Math.Pow(y2-y1,2) + Math.Pow(z2-z1,2));
-    return distance;
-}
-
-Console.WriteLine(GetDistance(x1, y1, z1, x2, y2, z2)); 
-
-
-//              Задача № 23 
-
-Console.WriteLine("Введите ваше число");
-int number = Convert.ToInt32(Console.ReadLine());
-
-void GetDashboard(int num)
-{
-    for (int i = 1; i <= num; i++)
-    {
-        Console.WriteLine(Math.Pow(i,3));
-    }
-}
-
-GetDashboard(number);
