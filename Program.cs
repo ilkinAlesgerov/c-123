@@ -1,112 +1,86 @@
-﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами.
-//  Напишите программу, которая покажет количество чётных чисел в массиве.
-// [345, 897, 568, 234] -> 2
+﻿// Задача 41: Пользователь вводит с клавиатуры M чисел. 
+// Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// 0, 7, 8, -2, -2 -> 2
+// 1, -7, 567, 89, 223-> 3
 
 int[] CreateArray()
 {
-    int[] arr = new int[4];
+    int[] arr = new int[5];
     Random rnd = new Random();
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = rnd.Next(100,1000);
+        arr[i] =  rnd.Next(-1000, 1000);
         System.Console.Write($"{arr[i]} ");
     }
     return arr;
 }
 
-void FindEvenNumbers(int[] array)
+int ShowMoreZero(int[] array)
 {
-    int countEven = 0;
+    int count = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if(array[i]%2==0)
+        if(array[i] > 0)
         {
             array[i] = 1;
-            countEven += array[i];
+            count += array[i];
+
         }
     }
-    System.Console.WriteLine();
-    System.Console.WriteLine(countEven);
+    Console.WriteLine();
+    Console.WriteLine(count); 
+    return count;
+
 }
 
-FindEvenNumbers(CreateArray());
+ShowMoreZero(CreateArray());
+
+// Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, 
+// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; 
+// значения b1, k1, b2 и k2 задаются пользователем.
+// b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
+// k1*x+b1 = k2*x +b2
+
+// k1*x - k2*x = b2-b1
+
+// x(k1-k2) = b2-b1; x = (b2-b1)/(k1-k2)
+
+// y = k1 * (b2-b1)/(k1-k2) + b1,
 
 
+double[,] points = new double[2, 2];
+double[] crosspoint = new double[2];
 
-
-// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
-// [3, 7, 23, 12] -> 19
-// [-4, -6, 89, 6] -> 0
-
-int[] CreateArray()
+void InputPoints()
 {
-    int[] arr = new int[4];
-    Random rnd = new Random();
-    for (int i = 0; i < arr.Length; i++)
+    for (int i = 0; i < points.GetLength(0); i++)
     {
-        arr[i] = rnd.Next(-10, 100);
-        System.Console.Write($"{arr[i]} ");
-    }
-    return arr;
-}
-
-
-void DigitSum(int[] array)
-{
-    int sum = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (i%2==1)
+        if (i == 0) Console.WriteLine("значения для первого ур-ния");
+        else Console.WriteLine("значения второго ур-ния");
+        for (int j = 0; j < points.GetLength(1); j++)
         {
-            sum += array[i];
+            if (j == 0) Console.WriteLine("Введите точку b");
+            else Console.WriteLine("Введите число k");
+            points[i, j] = Convert.ToInt32(Console.ReadLine());
         }
     }
-    System.Console.WriteLine();
-    System.Console.WriteLine(sum);
+
 }
 
-DigitSum(CreateArray());
-
-
-// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-// [3 7 22 2 78] -> 76
-
-int[] CreateArray()
+double[] DigitCrossPoint()
 {
-    int[] arr = new int[4];
-    Random rnd = new Random();
-    for (int i = 0; i < arr.Length; i++)
-    {
-        arr[i] = rnd.Next(1, 100);
-        System.Console.Write($"{arr[i]} ");
-    }
-    return arr;
+
+    crosspoint[0] = (points[1,0] - points[0, 0]) / (points[0, 1] - points[1, 1]);
+    crosspoint[1] = (points[0, 1] * crosspoint[0]) + points[0, 0];
+    System.Console.WriteLine(points[1,1]-points[0,1]);
+    return crosspoint;
 }
 
-void FindDif(int[] array)
+void ShowCrossPoint(double[,] points)
 {
-    int max = 0;
-    int min = array[0];
-    var diff = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-
-        if (array[i] > max)
-        {
-            max = array[i];
-
-        }
-        if (array[i] < min)
-        {
-            min = array[i];
-
-        }
-    }
-    
-    System.Console.WriteLine();
-    System.Console.WriteLine($"{max} , {min}");
-    diff = max - min;
-    System.Console.WriteLine(diff);
+    DigitCrossPoint();
+    Console.WriteLine($"точка пересечения: ({crosspoint[0]}  ,  {crosspoint[1]})");
 }
 
-FindDif(CreateArray());
+InputPoints();
+ShowCrossPoint(points);
