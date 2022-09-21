@@ -49,7 +49,7 @@ ShowMoreZero(CreateArray());
 
 
 double[,] points = new double[2, 2];
-double[] crosspoint = new double[2];
+double[] crossPoint = new double[2];
 
 void InputPoints()
 {
@@ -70,16 +70,16 @@ void InputPoints()
 double[] DigitCrossPoint()
 {
 
-    crosspoint[0] = (points[1,0] - points[0, 0]) / (points[0, 1] - points[1, 1]);
-    crosspoint[1] = (points[0, 1] * crosspoint[0]) + points[0, 0];
+    crossPoint[0] = (points[1,0] - points[0, 0]) / (points[0, 1] - points[1, 1]);
+    crossPoint[1] = (points[0, 1] * crossPoint[0]) + points[0, 0];
     System.Console.WriteLine(points[1,1]-points[0,1]);
-    return crosspoint;
+    return crossPoint;
 }
 
 void ShowCrossPoint(double[,] points)
 {
     DigitCrossPoint();
-    Console.WriteLine($"точка пересечения: ({crosspoint[0]}  ,  {crosspoint[1]})");
+    Console.WriteLine($"точка пересечения: ({crossPoint[0]}  ,  {crossPoint[1]})");
 }
 
 InputPoints();
