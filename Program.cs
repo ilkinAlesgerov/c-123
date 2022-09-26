@@ -1,85 +1,134 @@
-﻿// Задача 41: Пользователь вводит с клавиатуры M чисел. 
-// Посчитайте, сколько чисел больше 0 ввёл пользователь.
-// 0, 7, 8, -2, -2 -> 2
-// 1, -7, 567, 89, 223-> 3
+﻿// Задача 47.Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
 
-int[] CreateArray()
-{
-    int[] arr = new int[5];
-    Random rnd = new Random();
-    for (int i = 0; i < arr.Length; i++)
-    {
-        arr[i] =  rnd.Next(-1000, 1000);
-        System.Console.Write($"{arr[i]} ");
-    }
-    return arr;
-}
+Console.WriteLine("Введите значение для m: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите значение для n: ");
+int columns = Convert.ToInt32(Console.ReadLine());
 
-int ShowMoreZero(int[] array)
+
+
+double[,] array = new double[rows, columns];
+Random rnd = new Random();
+void CreateArray()
 {
-    int count = 0;
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        if(array[i] > 0)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i] = 1;
-            count += array[i];
-
+            array[i, j] = rnd.Next(1, 10) + rnd.NextDouble();
+            Console.Write(Math.Round(array[i, j], 1) + "\t");
         }
+        Console.WriteLine();
     }
-    Console.WriteLine();
-    Console.WriteLine(count); 
-    return count;
-
 }
-
-ShowMoreZero(CreateArray());
-
-// Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, 
-// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; 
-// значения b1, k1, b2 и k2 задаются пользователем.
-// b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
-// k1*x+b1 = k2*x +b2
-
-// k1*x - k2*x = b2-b1
-
-// x(k1-k2) = b2-b1; x = (b2-b1)/(k1-k2)
-
-// y = k1 * (b2-b1)/(k1-k2) + b1,
+CreateArray();
 
 
-double[,] points = new double[2, 2];
-double[] crossPoint = new double[2];
 
-void InputPoints()
+
+
+
+
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 17->такого числа в массиве нет
+
+Console.WriteLine("Введите  первое значение  ");
+int num1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите  второе значение ");
+int num2 = Convert.ToInt32(Console.ReadLine());
+
+int[,] array = new int[3, 4];
+Random rnd = new Random();
+
+void CreateArray()
 {
-    for (int i = 0; i < points.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        if (i == 0) Console.WriteLine("значения для первого ур-ния");
-        else Console.WriteLine("значения второго ур-ния");
-        for (int j = 0; j < points.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (j == 0) Console.WriteLine("Введите точку b");
-            else Console.WriteLine("Введите число k");
-            points[i, j] = Convert.ToInt32(Console.ReadLine());
+            array[i, j] = rnd.Next(1, 10);
+            Console.Write($"{array[i, j]} ");
         }
+        Console.WriteLine();
     }
-
 }
+CreateArray();
 
-double[] DigitCrossPoint()
+void FindElement(int[,] array)
 {
 
-    crossPoint[0] = (points[1,0] - points[0, 0]) / (points[0, 1] - points[1, 1]);
-    crossPoint[1] = (points[0, 1] * crossPoint[0]) + points[0, 0];
-    return crossPoint;
+    if (num1 > array.GetLength(0) || num2 > array.GetLength(1)) 
+    {
+        System.Console.WriteLine("такого числа в массиве нет");
+    }
+    else
+    {
+        int tmp = new int();
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                if (array[i, j] == array[num1, num2])
+                {
+                    tmp = array[i, j];
+                }
+            }
+        }
+        System.Console.WriteLine(tmp);
+    }
 }
 
-void ShowCrossPoint(double[,] points)
+FindElement(array);
+
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+int[,] array = new int[3, 4];
+Random rnd = new Random();
+CreateArray(array);
+
+void CreateArray(int[,] array)
 {
-    DigitCrossPoint();
-    Console.WriteLine($"точка пересечения: ({crossPoint[0]}  ,  {crossPoint[1]})");
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = rnd.Next(1, 10);
+            Console.Write(array[i, j] + "\t");
+        }
+        Console.WriteLine();
+    }
 }
 
-InputPoints();
-ShowCrossPoint(points);
+
+
+void FindAverageNumberInColumn(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(1); i++)
+    {
+        double average = 0;
+        for (int j = 0; j < array.GetLength(0); j++)
+        {
+            average += array[j, i];
+        }
+        average = Math.Round(average / array.GetLength(0), 1);
+        Console.WriteLine($"столбца № {i + 1}-> {average}");
+    }
+}
+
+FindAverageNumberInColumn(array);
+
+
